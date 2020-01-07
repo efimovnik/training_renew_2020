@@ -13,7 +13,7 @@ class Adressbook(unittest.TestCase):
     def setUp(self):
         self.wd = webdriver.Chrome()
         self.wd.implicitly_wait(30)
-    
+
     def test_add_group(self):
         wd = self.wd
         self.open_home_page(wd)
@@ -65,15 +65,19 @@ class Adressbook(unittest.TestCase):
         wd.get("http://localhost/addressbook/group.php")
 
     def is_element_present(self, how, what):
-        try: self.wd.find_element(by=how, value=what)
-        except NoSuchElementException as e: return False
+        try:
+            self.wd.find_element(by=how, value=what)
+        except NoSuchElementException as e:
+            return False
         return True
-    
+
     def is_alert_present(self):
-        try: self.wd.switch_to_alert()
-        except NoAlertPresentException as e: return False
+        try:
+            self.wd.switch_to_alert()
+        except NoAlertPresentException as e:
+            return False
         return True
-    
+
     def tearDown(self):
         self.wd.quit()
 
